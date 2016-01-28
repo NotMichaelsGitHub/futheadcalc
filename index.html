@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="stylesheet.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script>
+
+        $(function() {
+            //----- OPEN
+            $('[data-popup-open]').on('click', function(e)  {
+                var targeted_popup_class = jQuery(this).attr('data-popup-open');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+
+                e.preventDefault();
+            });
+
+            //----- CLOSE
+            $('[data-popup-close]').on('click', function(e)  {
+                var targeted_popup_class = jQuery(this).attr('data-popup-close');
+                $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+
+                e.preventDefault();
+            });
+        });
+
+    </script>
+
+
+</head>
+<body>
+
+<header>
+    <img src="futhead%20calculator%20pics/capture.png" atl="headofsite">
+
+    <!--  <div class="right">
+          <img src="futhead%20calculator%20pics/notmichael.PNG" atl="headofsite2" style="width: 250px;height: 15px;" style="text-align: right">
+      </div> -->
+
+
+    <h3>
+        <a class="btn" data-popup-open="popup-1" href="#">About</a>
+    </h3>
+    <h3>
+        Shameless plugs - <a href="http://www.futhead.com/user/NotMichael/" target="blank"> Futhead</a> | <a href="https://www.youtube.com/channel/UCwVRUxMC2C-YwwZHQq-ej5Q" target="blank">Youtube</a> | <a href="https://twitter.com/TheNotMichael" target="blank">Twitter</a>
+    </h3>
+
+
+</header>
+
+<br>
+
+<button type="button" disabled>SQUAD REPORT</button>
+
+<button onclick="window.location.href='index2.html'">INGAME</button>
+
+
+
+
+<br><br><br>
+<label>PHYSICAL:</label>
+<br><br>
+
+Acceleration: <input type="text" id="acctxt" value="">
+Sprint Speed: <input type="text" id="sstxt" value="">
+
+<br><br>
+
+Agility: <input type="text" id="agitxt" value="">
+Balance: <input type="text" id="baltxt" value="">
+
+<br><br>
+
+Jumping: <input type="text" id="jumtxt" value="">
+Stamina: <input type="text" id="statxt" value="">
+
+<br><br>
+
+Strength: <input type="text" id="strtxt" value="">
+Reactions: <input type="text" id="reacttxt" value ="DOESN'T AFFECT CARD">
+
+<br><br>
+<label>MENTAL:</label>
+<br><br>
+
+Aggression:  <input type="text" id="agtxt" value="">
+Interceptions: <input type="text" id="intertxt" value="">
+
+<br><br>
+
+Positioning:  <input type="text" id="postxt" value="">
+Vision: <input type="text" id="vistxt" value="">
+
+<br><br>
+<label>TECHNICAL:</label>
+<br><br>
+
+Ball Control: <input type="text" id="ballctxt" value="">
+Crossing: <input type="text" id="crostxt" value="">
+
+<br><br>
+
+Dribbling: <input type="text" id="dribtxt" value="">
+Finishing: <input type="text" id="fintxt" value="">
+
+<br><br>
+
+FK Acc: <input type="text" id="fkatxt" value="">
+Heading Acc <input type="text" id="hatxt" value="">
+
+<br><br>
+
+Long Passing: <input type="text" id="lpasstxt" value="">
+Short Passing: <input type="text" id="spasstxt" value="">
+
+<br><br>
+
+Marking: <input type="text" id="mrktxt" value="">
+Shot Power: <input type="text" id="sptxt" value="">
+
+<br><br>
+
+Long Shots: <input type="text" id="lstxt" value="">
+Stand Tackle: <input type="text" id="stanttxt" value="">
+
+<br><br>
+
+Slide Tackle: : <input type="text" id="slidttxt" value="">
+Volleys: <input type="text" id="voltxt" value="">
+
+<br><br>
+
+Curve: <input type="text" id="curtxt" value="">
+Penalties: <input type="text" id="pentxt" value="">
+
+
+
+
+
+<br><br><br><br>
+
+<button class="baton" onclick="myFunction1()">Calculate</button>
+
+<br><br>
+
+<div>
+    PAC <label id="lblPace"></label>
+    DRI <label id="lblDribbling"></label>
+
+    <br>
+
+    SHO <label id="lblShooting"></label>
+    DEF <label id="lblDefending"></label>
+
+    <br>
+
+    PAS <label id="lblPassing"></label>
+    PHY <label id="lblPhysical"></label>
+
+</div>
+
+
+
+<br><br><br><br><br><br>
+
+<h5>After you get the stats, you might as well head over to <a href="http://www.futhead.com/card-generator/" target="blank">Futhead's card generator</a> add bring the cards to life</h5>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+    //round the stats correctly
+
+
+    function myFunction1() {
+        var acc = parseInt(document.getElementById("acctxt").value);
+        var ss = parseInt(document.getElementById("sstxt").value);
+        var cardstatPace = Math.round((ss*.55)+(acc*.45))
+        // window.alert(cardstatPace);
+        document.getElementById('lblPace').innerHTML = cardstatPace;
+
+        var fin = parseInt(document.getElementById("fintxt").value);
+        var ls = parseInt(document.getElementById("lstxt").value);
+        var sp = parseInt(document.getElementById("sptxt").value);
+        var pos = parseInt(document.getElementById("postxt").value);
+        var pen = parseInt(document.getElementById("pentxt").value);
+        var vol = parseInt(document.getElementById("voltxt").value);
+        var cardstatShooting = Math.round((fin*0.45)+(ls*0.2)+(sp*0.2)+(pos*0.05)+(pen*0.05)+(vol*0.05));
+        //   window.alert(cardstatShooting);
+        document.getElementById('lblShooting').innerHTML = cardstatShooting;
+
+        var spass = parseInt(document.getElementById("spasstxt").value);
+        var vis= parseInt(document.getElementById("vistxt").value);
+        var cros = parseInt(document.getElementById("crostxt").value);
+        var lpass = parseInt(document.getElementById("lpasstxt").value);
+        var cur = parseInt(document.getElementById("curtxt").value);
+        var fka = parseInt(document.getElementById("fkatxt").value);
+        var cardstatPassing = Math.round((spass*0.35)+(vis*0.2)+(cros*0.2)+(lpass*0.15)+(cur*0.05)+(fka*0.05));
+        //  window.alert(cardstatPassing);
+        document.getElementById('lblPassing').innerHTML = cardstatPassing;
+
+        var drib = parseInt(document.getElementById("dribtxt").value);
+        var ballc = parseInt(document.getElementById("ballctxt").value);
+        var agi= parseInt(document.getElementById("agitxt").value);
+        var bal = parseInt(document.getElementById("baltxt").value);
+        var cardstatDribbling = Math.round((drib*.5)+(ballc*.35)+(agi*.1)+(bal*.05));
+        //  window.alert(cardstatDribbling);
+        document.getElementById('lblDribbling').innerHTML = cardstatDribbling;
+
+        var mrk = parseInt(document.getElementById("mrktxt").value);
+        var stant = parseInt(document.getElementById("stanttxt").value);
+        var inter = parseInt(document.getElementById("intertxt").value);
+        var ha = parseInt(document.getElementById("hatxt").value);
+        var slidt = parseInt(document.getElementById("slidttxt").value);
+        var cardstatDefending = Math.round((mrk*.3)+(stant*.3)+(inter*.2)+(ha*.1)+(slidt*.1));
+        //   window.alert(cardstatDefending);
+        document.getElementById('lblDefending').innerHTML = cardstatDefending;
+
+        var str = parseInt(document.getElementById("strtxt").value);
+        var sta = parseInt(document.getElementById("statxt").value);
+        var ag = parseInt(document.getElementById("agtxt").value);
+        var jum = parseInt(document.getElementById("jumtxt").value);
+        var cardstatPhysical = Math.round((str*0.5)+(sta*0.25)+(ag*0.2)+(jum*0.05));
+        //   window.alert(cardstatPhysical);
+        document.getElementById('lblPhysical').innerHTML = cardstatPhysical;
+    }
+</script>
+
+
+
+<div class="popup" data-popup="popup-1">
+    <div class="popup-inner">
+        <h2>About</h2>
+
+        <p></p>
+
+        <p>A couple of years ago, using the power of maths, Wogwon managed to work out the algorithms that EA use to calculate FUT card stats using individual attributes. Every year after, Wogwon hops back onto the grind to find the algorithms for the UT card stats for every fifa.</p>
+        <br>
+        <p>Just plug in all the ingame stats and press the calculate button to find out the UT card stats</p>
+        <br>
+
+        <a data-popup-close="popup-1" href="#">Close</a>
+        <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+    </div>
+</div>
+
+</body>
+
+
+</html>
